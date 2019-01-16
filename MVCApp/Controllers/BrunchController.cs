@@ -34,10 +34,11 @@ namespace MVCApp.Controllers
 
         // POST: Brunch/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BrunchDto brunch)
         {
             try
             {
+                var x = brunch;
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
