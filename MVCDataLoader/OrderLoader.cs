@@ -9,7 +9,7 @@ using static MVCDataLoader.Globalvariables;
 
 namespace MVCDataLoader
 {
-    class OrderLoader
+   public static  class OrderLoader
     {
         public static OrderViewModel GetOrder(int id)
         {
@@ -20,25 +20,26 @@ namespace MVCDataLoader
             var result = Mapper.MapOrder(order);
             result.Staff = StaffLoader.GetInsertedById(result.Staff_id);
             result.Brunch = BrunchLoader.GetInsertedById(result.Brunch_id);
-
-
-
+            result.Gifts = GiftsLoader.GetInsertedById(result.Gift_id);
+            result.Client = ClientLoader.GetInsertedById(result.Client_id);
 
             return result;
         }
-
-        public static OrderViewModel GetInsertedOrder(int id)
+        /// <summary>
+        /// unused now 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static OrderViewModel GetInsertedById(int id)
         {
 
             OrdersDto order;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Orders/" + id.ToString()).Result;
             order = response.Content.ReadAsAsync<OrdersDto>().Result;
             var result = Mapper.MapOrder(order);
-
-
-
             return result;
         }
+
         public static List<OrderViewModel> GetOrders()
         {
             OrderViewModel  mappedOrder = new OrderViewModel();

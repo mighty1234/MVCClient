@@ -12,6 +12,6 @@ namespace DTOLibrary
         public string Name { get; set; }
         public string Email { get; set; }       
         public  List<OrderViewModel> Orders { get; set; }       
-        //public  List<StaffViewModel> Staff { get; set; }
+        public  List<StaffViewModel> Staff { get; set; }
     }
 }

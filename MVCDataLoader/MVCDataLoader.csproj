@@ -48,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrunchLoader.cs" />
+    <Compile Include="ClientLoader.cs" />
+    <Compile Include="GiftsLoader.cs" />
     <Compile Include="Globalvariables.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="OrderLoader.cs" />
+    <Compile Include="PositionLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffLoader.cs" />
   </ItemGroup>

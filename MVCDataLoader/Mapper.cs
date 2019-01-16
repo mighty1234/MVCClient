@@ -48,8 +48,44 @@ namespace MVCDataLoader
 
         }
 
+        public static PositionViewModel MapPosition(PositionDto position)
+        {
+            PositionViewModel positionViewModel = new PositionViewModel();
+            positionViewModel.Id = position.Id;
+            positionViewModel.Name = position.Name;
+            positionViewModel.Salary = position.Salary;
+            positionViewModel.Staff = new List<StaffViewModel>();
+
+            return positionViewModel;
+        }
+
+        public static GiftsViewModel MapGift(GiftsDto gift)
+        {
+            GiftsViewModel giftViewModel = new GiftsViewModel();
+            giftViewModel.Id = gift.Id;
+            giftViewModel.Name = gift.Name;
+            giftViewModel.Cost = gift.Cost;
+            giftViewModel.Orders = new List<OrderViewModel>();
+
+            return giftViewModel;
+        }
+
+        public static ClientViewModel MapClient(ClientDto client)
+        {
+           ClientViewModel clientViewModel = new ClientViewModel();
+
+            clientViewModel.Id = client.Id;
+            clientViewModel.Name = client.Name;
+            clientViewModel.Phone = client.Phone;
+            clientViewModel.Surname = client.Surname;
+            clientViewModel.Email = client.Email;
 
 
 
+
+           clientViewModel.Orders = new List<OrderViewModel>();
+
+            return clientViewModel;
+        }
     }
 }
