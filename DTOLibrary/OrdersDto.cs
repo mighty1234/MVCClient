@@ -11,9 +11,9 @@ namespace DTOLibrary
     {
        
         public int Id { get; set; }
-        public int Staff_id { get; set; }
-        public int Brunch_id { get; set; }
-        public int Client_id { get; set; }
-        public int Gift_id { get; set; }
+        public Nullable<int> Staff_id { get; set; }
+        public Nullable<int> Brunch_id { get; set; }
+        public Nullable<int> Client_id { get; set; }
+        public Nullable<int> Gift_id { get; set; }
     }
 }
