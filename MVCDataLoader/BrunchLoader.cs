@@ -19,9 +19,9 @@ namespace MVCDataLoader
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Brunch/" + id.ToString()).Result;
             brunch = response.Content.ReadAsAsync<BrunchDto>().Result;
             var result = Mapper.MapBrunch(brunch);
-            foreach (var item in  brunch.OrdersId)
+            foreach (var item in brunch.OrdersId)
             {
-                result.Orders.Add(OrderLoader.GetOrder(item));                
+                result.Orders.Add(OrderLoader.GetOrder(item));
             }
 
             foreach (var item in brunch.StaffId)
@@ -36,7 +36,7 @@ namespace MVCDataLoader
         }
         public static BrunchViewModel GetInsertedById(int id)
         {
-
+            
             BrunchDto brunch;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Brunch/" + id.ToString()).Result;
             brunch = response.Content.ReadAsAsync<BrunchDto>().Result;
@@ -46,9 +46,9 @@ namespace MVCDataLoader
 
             return result;
         }
-                
 
-        public static  List<BrunchViewModel> GetBrunches()
+
+        public static List<BrunchViewModel> GetBrunches()
         {
             BrunchViewModel mappedBrunch = new BrunchViewModel();
             List<BrunchViewModel> list = new List<BrunchViewModel>();
@@ -57,13 +57,14 @@ namespace MVCDataLoader
             IEnumerable<BrunchDto> brunchList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Brunch").Result;
             brunchList = response.Content.ReadAsAsync<IEnumerable<BrunchDto>>().Result;
-           
+
             foreach (var brunch in brunchList)
             {
                 mappedBrunch = Mapper.MapBrunch(brunch);
+               
                 foreach (var item in brunch.OrdersId)
                 {
-                   OrderViewModel order = OrderLoader.GetOrder(item);
+                    OrderViewModel order = OrderLoader.GetOrder(item);
                     mappedBrunch.Orders.Add(order);
                 }
                 foreach (var item in brunch.StaffId)
@@ -73,10 +74,24 @@ namespace MVCDataLoader
                     mappedBrunch.Staff.Add(staff);
                 }
 
-                    list.Add(mappedBrunch);
+                list.Add(mappedBrunch);
             }
 
             return list;
+
+
+        }
+
+        public static void Save(BrunchDto brunch)
+        {
+            if (brunch.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Brunch", brunch).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Brunch/" + brunch.Id, brunch).Result;
+            }
 
         }
     }
