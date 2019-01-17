@@ -93,6 +93,12 @@ namespace MVCDataLoader
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Brunch/" + brunch.Id, brunch).Result;
             }
 
+   
+        }
+
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Brunch/"+id).Result;
         }
     }
 }

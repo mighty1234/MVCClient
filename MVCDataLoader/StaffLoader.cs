@@ -54,7 +54,6 @@ namespace MVCDataLoader
             StaffDto staff;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Staff/" + id.ToString()).Result;
             staff = response.Content.ReadAsAsync<StaffDto>().Result;
-
             var  result = Mapper.MapStaff(staff);
             
 

@@ -17,6 +17,7 @@ namespace MVCDataLoader
             brunchViewModel.Email = brunch.Email;
             brunchViewModel.Address = brunch.Address;
             brunchViewModel.Orders = new List<OrderViewModel>();
+            brunchViewModel.Staff = new List<StaffViewModel>();
 
             return brunchViewModel;
         }

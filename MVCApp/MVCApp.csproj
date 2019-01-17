@@ -186,9 +186,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Brunch\Brunch.cshtml" />
     <Content Include="Views\Brunch\Index.cshtml" />
     <Content Include="Views\Brunch\Create.cshtml" />
+    <Content Include="Views\Brunch\Edit.cshtml" />
+    <Content Include="Views\Brunch\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

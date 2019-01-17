@@ -23,7 +23,10 @@ namespace MVCApp.Controllers
         // GET: Brunch/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+           var brunch=  BrunchLoader.GetBrunch(id);
+            ViewBag.Staff = brunch.Staff;
+            ViewBag.Oreder = brunch.Orders;
+            return View(brunch);
         }
 
         // GET: Brunch/Create
@@ -38,7 +41,8 @@ namespace MVCApp.Controllers
         {
             try
             {
-                var x = brunch;
+                BrunchLoader.Save(brunch);
+                TempData["SuccessMessage"] = "Created Successfully";
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -57,11 +61,12 @@ namespace MVCApp.Controllers
 
         // POST: Brunch/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, BrunchDto brunch)
         {
             try
             {
-                // TODO: Add update logic here
+                BrunchLoader.Save(brunch);
+                TempData["SuccessMessage"] = "Updated Successfully";
 
                 return RedirectToAction("Index");
             }
@@ -71,20 +76,22 @@ namespace MVCApp.Controllers
             }
         }
 
-        // GET: Brunch/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //// GET: Brunch/Delete/5
+        //public ActionResult Delete()
+        //{
+        //    return View();
+        //}
 
-        // POST: Brunch/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+
+        [HttpGet]
+        // POST: Brunch/Delete/5   
+        public ActionResult Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                BrunchLoader.Delete(id);
+                TempData["SuccessMessage"] = "Deleted Successfully";
                 return RedirectToAction("Index");
             }
             catch

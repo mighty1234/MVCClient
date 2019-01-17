@@ -47,6 +47,7 @@ namespace MVCDataLoader
 
         public static ClientViewModel GetById(int id)
         {
+           
             ClientDto client;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Clients/" + id.ToString()).Result;
             client = response.Content.ReadAsAsync<ClientDto>().Result;
