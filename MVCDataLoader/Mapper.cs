@@ -41,6 +41,8 @@ namespace MVCDataLoader
             staffViewModel.Id = staff.Id;
             staffViewModel.Surname = staff.Surname;
             staffViewModel.Name = staff.Name;
+            staffViewModel.Brunch_id = staff.Brunch_id;
+            staffViewModel.Position_id = staff.Position_id;
             staffViewModel.Brunch =new BrunchViewModel();
             staffViewModel.Orders = new List<OrderViewModel>();
             staffViewModel.Position = new PositionViewModel();

@@ -75,8 +75,27 @@ namespace MVCDataLoader
             return result;
         }
 
+        public static void Save(ClientDto client)
+        {
+            if (client.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Clients", client).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Clients/" + client.Id, client).Result;
+            }
 
 
-    
-}
+        }
+
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Client/" + id).Result;
+        }
+
+
+
+
+    }
 }

@@ -143,7 +143,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BrunchController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,7 +192,24 @@
     <Content Include="Views\Brunch\Index.cshtml" />
     <Content Include="Views\Brunch\Create.cshtml" />
     <Content Include="Views\Brunch\Edit.cshtml" />
+    <Content Include="Views\PartialViews\PartialClient.cshtml" />
     <Content Include="Views\Brunch\Details.cshtml" />
+    <Content Include="Views\PartialViews\StaffPartialView.cshtml" />
+    <Content Include="Views\PartialViews\OrdresPartialView.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\PartialViews\BrunchPartialView.cshtml" />
+    <Content Include="Views\PartialViews\PositionPartialView.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Position\Index.cshtml" />
+    <Content Include="Views\Position\Details.cshtml" />
+    <Content Include="Views\Position\Create.cshtml" />
+    <Content Include="Views\Position\Edit.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

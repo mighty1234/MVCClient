@@ -8,44 +8,46 @@ using System.Web.Mvc;
 
 namespace MVCApp.Controllers
 {
-    public class BrunchController : Controller
+    public class PositionController : Controller
     {
-        // GET: Brunch
+        // GET: Position
+      
         public ActionResult Index()
         {
+           var positions= PositionLoader.GetAll();            
 
-            List<BrunchViewModel> x = BrunchLoader.GetBrunches();
-        
-
-            return View(x);
+            return View(positions);
         }
 
-        // GET: Brunch/Details/5
+        // GET: Position/Details/5
         public ActionResult Details(int id)
         {
-           var brunch=  BrunchLoader.GetBrunch(id);
-            ViewBag.Staff = brunch.Staff;
-            ViewBag.Oredrs = brunch.Orders;
-            return View(brunch);
+            
+            var result = PositionLoader.GetById(id);
+          
+
+            return View(result);
         }
 
-        // GET: Brunch/Create
+        // GET: Position/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Brunch/Create
+        // POST: Position/Create
         [HttpPost]
-        public ActionResult Create(BrunchDto brunch)
+        public ActionResult Create(PositionDto  position)
         {
             try
             {
-                BrunchLoader.Save(brunch);
+               PositionLoader.Save(position);
                 TempData["SuccessMessage"] = "Created Successfully";
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
+
+                
             }
             catch
             {
@@ -53,30 +55,20 @@ namespace MVCApp.Controllers
             }
         }
 
-        // GET: Brunch/Edit/5
+        // GET: Position/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Brunch/Edit/5
+        // POST: Position/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, BrunchDto brunch)
+        public ActionResult Edit(int id, PositionDto position)
         {
             try
             {
-                if (id == brunch.Id)
-                {
-                    BrunchLoader.Save(brunch);
-                    TempData["SuccessMessage"] = "Updated Successfully";
-                }
-                else
-                {
-                    TempData["FailMessage"] = "Updated Failed";
-                    return View();
-                    
-                }
 
+                PositionLoader.Save(position);
                 return RedirectToAction("Index");
             }
             catch
@@ -85,22 +77,16 @@ namespace MVCApp.Controllers
             }
         }
 
-        //// GET: Brunch/Delete/5
-        //public ActionResult Delete()
-        //{
-        //    return View();
-        //}
-
-
+       
+        //  Position/Delete/5
         [HttpGet]
-     //Brunch/Delete/5   
         public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-                BrunchLoader.Delete(id);
+                PositionLoader.Delete(id);
                 TempData["SuccessMessage"] = "Deleted Successfully";
+
                 return RedirectToAction("Index");
             }
             catch

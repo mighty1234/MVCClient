@@ -1,14 +1,7 @@
 ﻿@model DTOLibrary.BrunchViewModel
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
+<h4>Brunch Detail</h4>
 <div>
-    <h4>BrunchViewModel</h4>
-    <hr />
+   
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Address)
@@ -35,17 +28,4 @@
         </dd>
 
     </dl>
-
 </div>
-@if (Model.Staff != null)
-{
-    @Html.Partial("~/Views/PartialViews/StaffPartialView.cshtml", Model.Staff)
-}
-@*@if (Model.Orders != null)
-{
-    @Html.Partial("~/PartialViews/OrderPartialView", Model.Staff)
-}*@
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

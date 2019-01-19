@@ -48,11 +48,12 @@ namespace MVCDataLoader
 
         public static PositionViewModel GetById(int id)
         {
-          PositionDto position;
+            PositionDto position;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Position/" + id.ToString()).Result;
             position = response.Content.ReadAsAsync<PositionDto>().Result;
             var result = Mapper.MapPosition(position);
-            // result.Orders=OrderLoader.
+            result.Staff = StaffLoader.GetAll().Where(x => x.Position_id == result.Id).ToList();
+
 
 
 
@@ -66,10 +67,28 @@ namespace MVCDataLoader
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Position/" + id.ToString()).Result;
             position = response.Content.ReadAsAsync<PositionDto>().Result;
             var result = Mapper.MapPosition(position);
-        
+
 
 
             return result;
+        }
+
+        public static void Save(PositionDto position)
+        {
+
+            if (position.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Position", position).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Position/" + position.Id, position).Result;
+            }
+        }
+
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Position/" + id).Result;
         }
     }
 }

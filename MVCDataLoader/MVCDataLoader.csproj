@@ -51,6 +51,7 @@
     <Compile Include="ClientLoader.cs" />
     <Compile Include="GiftsLoader.cs" />
     <Compile Include="Globalvariables.cs" />
+    <Compile Include="ILoader.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="OrderLoader.cs" />
     <Compile Include="PositionLoader.cs" />

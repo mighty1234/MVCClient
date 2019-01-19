@@ -9,7 +9,7 @@ using static MVCDataLoader.Globalvariables;
 
 namespace MVCDataLoader
 {
-    class StaffLoader
+  public  class StaffLoader
     {
         public static List<StaffViewModel> GetAll()
         {
@@ -25,9 +25,9 @@ namespace MVCDataLoader
             foreach (var staff in staffs)
             {
                 mappedStaff = Mapper.MapStaff(staff);
-                mappedStaff.Brunch = BrunchLoader.GetInsertedById(staff.BrunchId);
-                mappedStaff.Position = PositionLoader.GetInsertedById(staff.PositionId);
-                foreach (var orders in staff.OrsersId)
+                mappedStaff.Brunch = BrunchLoader.GetInsertedById(staff.Brunch_id);
+                mappedStaff.Position = PositionLoader.GetInsertedById(staff.Position_id);
+                foreach (var orders in staff.Orsers_id)
                 {
                     var order = MVCDataLoader.OrderLoader.GetInsertedById(orders);
                     mappedStaff.Orders.Add(order);
@@ -71,7 +71,7 @@ namespace MVCDataLoader
             var result = Mapper.MapStaff(staff);
             result.Position = PositionLoader.GetInsertedById(result.Position_id);
             result.Brunch = BrunchLoader.GetInsertedById(result.Brunch_id);
-            foreach (var order in staff.OrsersId)
+            foreach (var order in staff.Orsers_id)
             {
                var getorder = OrderLoader.GetOrder(order);
 
@@ -80,7 +80,26 @@ namespace MVCDataLoader
             return result;
         }
 
-       
-       
+        public static void Save(StaffDto staff)
+        {
+           
+            if (staff.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Staff", staff).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Staff/" + staff.Id, staff).Result;
+            }
+
+
+        }
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Staff/" + id).Result;
+        }
+
+
+
     }
 }

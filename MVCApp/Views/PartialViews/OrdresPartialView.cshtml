@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DTOLibrary.OrderViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brunch_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gift_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brunch_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gift_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

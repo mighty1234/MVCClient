@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DTOLibrary
 {
     public partial class StaffDto
-    {        
+    {
 
         public int Id { get; set; }
         [Required(ErrorMessage = "Field is requored")]
@@ -17,15 +17,12 @@ namespace DTOLibrary
         [Required(ErrorMessage = "Field is requored")]
         public string Surname { get; set; }
         [Required(ErrorMessage = "Field is requored")]
-        public int BrunchId { get; set; }
+        public int  Brunch_id { get; set; }
         [Required(ErrorMessage = "Field is requored")]
-        public List<int> OrsersId { get; set; }
-        public int PositionId { get; set; }
-
-       //public PositionDto Position{ get; set; }
-       // public BrunchDto Brunch { get; set; }
-       // public List<Orders> Orders { get; set; }
-  
+        public List<int> Orsers_id { get; set; }
+        [Required(ErrorMessage = "Field is requored")]
+        public int Position_id { get; set; }
+        
     }
 }
 

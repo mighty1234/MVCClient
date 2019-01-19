@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DTOLibrary
 {
-    public class BrunchViewModel
+    public class BrunchViewModel 
     {
         
         public int Id { get; set; }      
