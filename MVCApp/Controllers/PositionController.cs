@@ -69,11 +69,15 @@ namespace MVCApp.Controllers
             {
 
                 PositionLoader.Save(position);
-                return RedirectToAction("Index");
+                TempData["SuccessMessage"] = "Updated Successfully";
+                return Json(new { result = "Redirect", url = Url.Action("Index", "Position") });
+
+               // return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return Json(new { result = "InvalidLogin" }, JsonRequestBehavior.AllowGet);
+               // return View();
             }
         }
 

@@ -8,38 +8,37 @@ using System.Web.Mvc;
 
 namespace MVCApp.Controllers
 {
-    public class ClientController : Controller
+    public class GiftController : Controller
     {
-        // GET: Client
+        // GET: Gift
         public ActionResult Index()
         {
-            var result = ClientLoader.GetAll();
-            return View(result);
+            var gifts = GiftsLoader.GetGifts();
+            return View(gifts);
         }
 
-        // GET: Client/Details/5
+        // GET: Gift/Details/5
         public ActionResult Details(int id)
         {
-            var result = ClientLoader.GetById(id);
-            return View(result);
+            var Gift = GiftsLoader.GetGift(id);
+            return View(Gift);
         }
 
-        // GET: Client/Create
+        // GET: Gift/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Client/Create
+        // POST: Gift/Create
         [HttpPost]
-        public ActionResult Create(ClientDto  client)
+        public ActionResult Create(GiftsDto gift)
         {
             try
             {
-                ClientLoader.Save(client);
-                TempData["SuccessMessage"] = "Created Successfully";
+                GiftsLoader.Save(gift);
+
                 return RedirectToAction("Index");
-                
             }
             catch
             {
@@ -47,20 +46,20 @@ namespace MVCApp.Controllers
             }
         }
 
-        // GET: Client/Edit/5
+        // GET: Gift/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Client/Edit/5
+        // POST: Gift/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ClientDto client)
+        public ActionResult Edit(int id, GiftsDto gift)
         {
             try
             {
-                ClientLoader.Save(client);
-                TempData["SuccessMessage"] = "Updated Successfully";
+               
+                GiftsLoader.Save(gift);
 
                 return RedirectToAction("Index");
             }
@@ -70,18 +69,18 @@ namespace MVCApp.Controllers
             }
         }
 
-        
+      
 
-      //  Client/Delete/5
+      // Gift/Delete/5
         [HttpGet]
         public ActionResult Delete(int id)
         {
             try
             {
-                ClientLoader.Delete(id);
-  TempData["SuccessMessage"] = "Created Successfully";
+                GiftsLoader.Delete(id);
+                // TODO: Add delete logic here
+
                 return RedirectToAction("Index");
-              
             }
             catch
             {

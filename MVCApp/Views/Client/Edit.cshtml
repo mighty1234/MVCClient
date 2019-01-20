@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ClientDto</h4>
         <hr />
@@ -62,5 +62,12 @@
 </div>
 
 @section Scripts {
+<script>
+    function() {
+    var successMessage = '@TempData["SuccessMessage"]'
+    if (successMesage != '')
+    alertify.success(successMessage);
+    }
+    </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -11,7 +11,7 @@ namespace MVCDataLoader
 {
  public static  class GiftsLoader
     {
-        public static GiftsViewModel GetOrder(int id)
+        public static GiftsViewModel GetGift(int id)
         {
 
             GiftsDto gift;
@@ -37,7 +37,7 @@ namespace MVCDataLoader
             var result = Mapper.MapGift(gift);
             return result;
         }
-        public static List<GiftsViewModel> GetOrders()
+        public static List<GiftsViewModel> GetGifts()
         {
             GiftsViewModel mappedGift = new GiftsViewModel();
             List<GiftsViewModel> list = new List<GiftsViewModel>();
@@ -62,6 +62,25 @@ namespace MVCDataLoader
 
 
             return list;
+        }
+
+        public static void Save(GiftsDto gift)
+        {
+            if (gift.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Gift", gift).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Gift/" + gift.Id, gift).Result;
+            }
+
+
+        }
+
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Gift/" + id).Result;
         }
     }
 }

@@ -48,7 +48,7 @@ namespace MVCDataLoader
 
             List<OrdersDto> orders;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Orders").Result;
-            orders = response.Content.ReadAsAsync<List<OrdersDto>>().Result;
+            orders = response.Content.ReadAsAsync<IEnumerable<OrdersDto>>().Result.ToList();
 
             foreach (var order in orders)
             {
@@ -64,5 +64,24 @@ namespace MVCDataLoader
 
             return list;
         }
+        public static void Save(OrdersDto order)
+        {
+            if (order.Id == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Orders", order).Result;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Orders/" + order.Id, order).Result;
+            }
+
+
+        }
+
+        public static void Delete(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Orders/" + id).Result;
+        }
     }
 }
+
